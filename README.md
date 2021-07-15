@@ -13,7 +13,7 @@ This plugin requires neovim nightly (>=0.5.0).
 call plug#begin('~/.config/nvim/plugged')
     Plug 'yaocccc/nvim-lines.lua'
 call plug#end()
-lua require'nvim-lines.lua'
+lua require'nvim-lines'
 ```
 
 ./lua/nvim-lines.lua
