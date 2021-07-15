@@ -28,7 +28,7 @@ func! Clicktab(minwid, clicks, button, modifiers) abort
         silent execute 'bd' a:minwid
         let s:clickTabTimer = 0
         call timer_stop(l:timerID)
-        call lines#set_tabline()
+        lua require'nvim-lines.tabline'.set_tabline()
     endif
     let s:minwid = a:minwid
     let s:timerID = l:timerID
