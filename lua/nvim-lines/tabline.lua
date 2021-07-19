@@ -17,7 +17,7 @@ local function get_buf_list()
             local name = fn.bufname(i)
             local icon = common.get_fileicon(fn.getbufvar(i, '&ft'), name)
             local modi_mark = fn.getbufvar(i, '&mod') == 1 and line_modi_mark or ''
-            name = string.len(fn.fnamemodify(name, ':t')) > 0 and fn.fnamemodify(name, ':t') or line_unnamed_filename
+            name = #(fn.fnamemodify(name, ':t')) > 0 and fn.fnamemodify(name, ':t') or line_unnamed_filename
             name = icon .. name .. modi_mark
             table.insert(buflist, { nr = i, name = name, iscurrent = i == current })
         end

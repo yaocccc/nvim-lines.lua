@@ -28,7 +28,7 @@ local function get_filename()
     name = string.gsub(name, api.nvim_eval("$PWD"), '/')
     name = string.gsub(name, '//', '')
     name = string.gsub(name, api.nvim_eval("$HOME"), '~')
-    name = string.len(name) > 0 and name or line_unnamed_filename
+    name = #name > 0 and name or line_unnamed_filename
     return common.get_fileicon(api.nvim_eval("&ft"), fn.bufname('%')) .. name
 end
 
