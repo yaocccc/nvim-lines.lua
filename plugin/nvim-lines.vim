@@ -16,6 +16,16 @@ exec printf('hi VimLine_Dark_None   ctermfg=%s ctermbg=%s', s:line_hl.dark, s:li
 exec printf('hi VimLine_Light_Break ctermbg=%s ctermfg=%s', s:line_hl.light, s:line_hl.break)
 exec printf('hi VimLine_Dark_Break  ctermbg=%s ctermfg=%s', s:line_hl.dark, s:line_hl.break)
 
+exec printf('hi VimLine_Buf_None        ctermbg=%s', s:line_hl.none)
+exec printf('hi VimLine_Buf_Light       ctermbg=%s', s:line_hl.light)
+exec printf('hi VimLine_Buf_Dark        ctermbg=%s', s:line_hl.dark)
+exec printf('hi VimLine_Buf_Light_Dark  ctermfg=%s ctermbg=%s', s:line_hl.light, s:line_hl.dark)
+exec printf('hi VimLine_Buf_Dark_Light  ctermfg=%s ctermbg=%s', s:line_hl.dark, s:line_hl.light)
+exec printf('hi VimLine_Buf_Light_None  ctermfg=%s ctermbg=%s', s:line_hl.light, s:line_hl.none)
+exec printf('hi VimLine_Buf_Dark_None   ctermfg=%s ctermbg=%s', s:line_hl.dark, s:line_hl.none)
+exec printf('hi VimLine_Buf_Light_Break ctermbg=%s ctermfg=%s', s:line_hl.light, s:line_hl.break)
+exec printf('hi VimLine_Buf_Dark_Break  ctermbg=%s ctermfg=%s', s:line_hl.dark, s:line_hl.break)
+
 let SetStatusline = { -> luaeval("require'nvim-lines.statusline'.set_statusline()")}
 func! Clicktab(minwid, clicks, button, modifiers) abort
     let l:timerID = get(s:, 'clickTabTimer', 0)

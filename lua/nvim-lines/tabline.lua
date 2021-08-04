@@ -150,18 +150,18 @@ function M.set_tabline()
     table.insert(headinfos, { text = '%<' })
 
     for _,bufinfo in pairs(buflist) do
-        table.insert(bufinfos, { hl = bufinfo.iscurrent and 'VimLine_Light' or 'VimLine_Dark', text = ' ' .. bufinfo.name .. ' ', nr = bufinfo.nr })
+        table.insert(bufinfos, { hl = bufinfo.iscurrent and 'VimLine_Buf_Light' or 'VimLine_Buf_Dark', text = ' ' .. bufinfo.name .. ' ', nr = bufinfo.nr })
 
         local hl, text = '', ''
         local n = next(buflist, _)
         if n == nil then
-            hl = common.get_powerline_hl(bufinfo.iscurrent and 'VimLine_Light_None' or 'VimLine_Dark_None')
+            hl = common.get_powerline_hl(bufinfo.iscurrent and 'VimLine_Buf_Light_None' or 'VimLine_Buf_Dark_None')
             text = common.get_powerline_text('light_right')
         elseif buflist[n].iscurrent == bufinfo.iscurrent then
-            hl = common.get_powerline_hl('VimLine_Dark_Break')
+            hl = common.get_powerline_hl('VimLine_Buf_Dark_Break')
             text = common.get_powerline_text('dark_right')
         else
-            hl = common.get_powerline_hl(bufinfo.iscurrent and 'VimLine_Light_Dark' or 'VimLine_Dark_Light')
+            hl = common.get_powerline_hl(bufinfo.iscurrent and 'VimLine_Buf_Light_Dark' or 'VimLine_Buf_Dark_Light')
             text = common.get_powerline_text('light_right')
         end
 
