@@ -67,7 +67,7 @@ default_options
                       \  "S": "SELECT",
                       \  "\<c-s>": "SELECT",
                       \  "t": "TERMINAL"}
-  let g:line_hl = { 'none': 'NONE', 'light': '24', 'dark': '238', 'break': '244' } # highlight config
+  let g:line_hl = { 'none': 'NONE', 'light': '24', 'dark': '238', 'break': '244', 'space': '238' } # highlight config
 ```
 
 ```usage
@@ -125,7 +125,7 @@ Example:
                       \  "S": "SELECT",
                       \  "\<c-s>": "SELECT",
                       \  "t": "TERMINAL"}
-  let g:line_hl = { 'none': 'NONE', 'light': '24', 'dark': '238', 'break': '244' } # 高亮设置
+  let g:line_hl = { 'none': 'NONE', 'light': '24', 'dark': '238', 'break': '244', 'space': '238' } # 高亮设置
 ```
 
 ```usage

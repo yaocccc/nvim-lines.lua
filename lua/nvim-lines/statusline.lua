@@ -39,7 +39,7 @@ function M.refresh_statusline()
         else
             local space = ''
             for _=1,wininfo.width do space = space .. ' ' end
-            fn.setwinvar(wininfo.winnr, '&statusline', '%#VimLine_Dark#' .. space)
+            fn.setwinvar(wininfo.winnr, '&statusline', '%#VimLine_Space#' .. space)
         end
     end
 end
