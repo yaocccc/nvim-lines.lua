@@ -35,7 +35,7 @@ local function hide_bufinfos(bufinfos, columns)
 
     -- 找到当前块
     for _,bufinfo in pairs(bufinfos) do
-        if bufinfo.hl == 'VimLine_Light' then
+        if bufinfo.hl == 'VimLine_Buf_Light' then
             current = _
             break
         end
