@@ -143,7 +143,7 @@ function M.set_tabline()
     local buflist = get_buf_list()
     local isfirst = next(buflist) ~= nil and buflist[1].iscurrent
 
-    table.insert(headinfos, { hl = 'VimLine_Light', text = dirname })
+    table.insert(headinfos, { hl = 'VimLine_Light', text = '▒' .. dirname })
     table.insert(headinfos, isfirst
         and { hl = common.get_powerline_hl('VimLine_Light_Break'), text = common.get_powerline_text('dark_right') }
         or { hl = common.get_powerline_hl('VimLine_Light_Dark'), text = common.get_powerline_text('light_right') })
@@ -169,7 +169,7 @@ function M.set_tabline()
     end
 
     -- 隐藏超过长度的bufs
-    bufinfos = hide_bufinfos(bufinfos, api.nvim_eval('&columns') - fn.strwidth(dirname) - 1 )
+    bufinfos = hide_bufinfos(bufinfos, api.nvim_eval('&columns') - fn.strwidth(dirname) - 2 )
 
     for _,info in pairs(headinfos) do
         tabline = tabline .. common.info_to_text(info)

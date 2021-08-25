@@ -57,7 +57,7 @@ end
 
 function M.set_statusline(...)
     local infos = {}
-    table.insert(infos, { hl = 'VimLine_Light', text = ' ' .. line_mode_map[fn.mode()] .. ' ' })
+    table.insert(infos, { hl = 'VimLine_Light', text = '▒ ' .. line_mode_map[fn.mode()] .. ' ' })
     table.insert(infos, { hl = common.get_powerline_hl(next(infos) ~= nil and 'VimLine_Light_Dark' or 'VimLine_Light_None'), text = common.get_powerline_text('light_right') })
 
     for _,getter in pairs(line_statusline_getters) do
