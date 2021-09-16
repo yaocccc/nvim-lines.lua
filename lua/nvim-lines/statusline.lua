@@ -75,7 +75,7 @@ function M.set_statusline(...)
     table.insert(infos, { hl = common.get_powerline_hl('VimLine_Dark_None'), text = common.get_powerline_text('light_left') })
     table.insert(infos, { hl = 'VimLine_Dark', text =  string.format(' %s ', get_filename()) })
     table.insert(infos, { hl = common.get_powerline_hl('VimLine_Light_Dark'), text = common.get_powerline_text('light_left') })
-    table.insert(infos, { hl = 'VimLine_Light', text = ' %l:%L ' })
+    table.insert(infos, { hl = 'VimLine_Light', text = ' %l:%L:%v ' })
     table.insert(infos, { hl = 'VimLine_Light', text = percent_bar[math.ceil(barlen * fn.line('.') / fn.line('$'))] })
     table.insert(infos, { hl = 'VimLine_None' })
 
