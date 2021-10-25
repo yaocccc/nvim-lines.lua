@@ -48,9 +48,9 @@ function M.refresh_statusline()
         if wininfo.winnr == fn.winnr() then
             cmd('setlocal statusline<')
         else
-            local space = ''
-            for _=1,wininfo.width do space = space .. ' ' end
-            fn.setwinvar(wininfo.winnr, '&statusline', '%#VimLine_Space#' .. space)
+            local text = ''
+            for _=1,wininfo.width do text = text .. '─' end
+            fn.setwinvar(wininfo.winnr, '&statusline', '%#VimLine_Other#' .. text)
         end
     end
 end
