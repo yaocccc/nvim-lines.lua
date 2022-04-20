@@ -27,7 +27,6 @@ exec printf('hi VimLine_Buf_Light_Break ctermbg=%s ctermfg=%s', s:line_hl.light,
 exec printf('hi VimLine_Buf_Dark_Break  ctermbg=%s ctermfg=%s', s:line_hl.dark, s:line_hl.break)
 
 exec printf('hi VimLine_Space ctermbg=%s', s:line_hl.space)
-exec printf('hi VimLine_Other ctermfg=%s ctermbg=%s', s:line_hl.dark, s:line_hl.none)
 
 let SetStatusline = { -> luaeval("require'nvim-lines.statusline'.set_statusline()")}
 func! SetTabline(...)
