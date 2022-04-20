@@ -43,18 +43,6 @@ local function get_filename()
     return common.get_fileicon(api.nvim_eval("&ft"), fn.bufname('%')) .. name
 end
 
-function M.refresh_statusline()
-    for _,wininfo in pairs(fn.getwininfo()) do
-        if wininfo.winnr == fn.winnr() then
-            cmd('setlocal statusline<')
-        else
-            local text = ''
-            for _=1,wininfo.width do text = text .. '─' end
-            fn.setwinvar(wininfo.winnr, '&statusline', '%#VimLine_Other#' .. text)
-        end
-    end
-end
-
 function M.set_statusline(...)
     local infos = {}
     table.insert(infos, { hl = 'VimLine_Light', text = '▒ ' .. line_mode_map[fn.mode()] .. ' ' })
