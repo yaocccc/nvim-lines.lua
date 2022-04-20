@@ -58,12 +58,11 @@ endf
 augroup lines
     au!
     if s:line_statusline_enable == 1
-        set laststatus=2
+        set laststatus=3
         setglobal statusline=%!SetStatusline()
-        au BufEnter,WinEnter * lua require'nvim-lines.statusline'.refresh_statusline()
     endif
     if s:line_tabline_enable == 1
-        set showtabline=2
+        set showtabline=3
         au BufEnter,BufWritePost,TextChanged,TextChangedI * call SetTabline()
         au BufEnter,BufLeave,BufWritePost,TextChanged,TextChangedI * call timer_start(0, 'SetTabline')
     endif
