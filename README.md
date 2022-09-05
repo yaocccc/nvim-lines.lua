@@ -6,7 +6,9 @@ This plugin requires neovim nightly (>=0.5.0).
 
 ![avatar](./screenshots/line1.png)
 
-show custom statusline and tabline
+show custom statusline and tabline  
+
+my custom config [lua/pack/nvim-lines.lua](https://github.com/yaocccc/nvim/blob/master/lua/pack/nvim-lines.lua)
 
 ![show](./screenshots/show.gif)
 
