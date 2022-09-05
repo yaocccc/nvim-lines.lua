@@ -6,6 +6,10 @@ This plugin requires neovim nightly (>=0.5.0).
 
 ![avatar](./screenshots/line1.png)
 
+show custom statusline and tabline
+
+![show](./screenshots/show.gif)
+
 ## EXAMPLE CONFIG
 
 ./init.vim
