@@ -7,6 +7,7 @@ local common = require'nvim-lines.common'
 local dirname = ' ' .. common.get_diricon() .. api.nvim_eval("$PWD == $HOME ? '~' : substitute($PWD, '\\v(.*/)*', '', 'g')") .. ' '
 local line_modi_mark = vim.g.line_modi_mark or '+'
 local line_unnamed_filename = vim.g.line_unnamed_filename or '[unnamed]'
+local tabline_headsymbol = vim.g.line_tabline_headsymbol or '▒'
 
 local function get_buf_list()
     local buflist = {}
@@ -143,7 +144,7 @@ function M.set_tabline()
     local buflist = get_buf_list()
     local isfirst = next(buflist) ~= nil and buflist[1].iscurrent
 
-    table.insert(headinfos, { hl = 'VimLine_Light', text = '▒' .. dirname })
+    table.insert(headinfos, { hl = 'VimLine_Light', text = tabline_headsymbol .. dirname })
     table.insert(headinfos, isfirst
         and { hl = common.get_powerline_hl('VimLine_Light_Break'), text = common.get_powerline_text('dark_right') }
         or { hl = common.get_powerline_hl('VimLine_Light_Dark'), text = common.get_powerline_text('light_right') })

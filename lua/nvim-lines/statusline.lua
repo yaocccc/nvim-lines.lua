@@ -22,8 +22,7 @@ local line_mode_map = {
 }
 local line_statusline_getters = vim.g.line_statusline_getters or {}
 local line_unnamed_filename = vim.g.line_unnamed_filename or '[unnamed]'
-
-local percent_bar = {
+local percent_bar = vim.g.line_percent_bar or {
    '░░░',
    '▒░░',
    '█░░',
@@ -33,6 +32,7 @@ local percent_bar = {
    '███',
 }
 local barlen = #percent_bar
+local statusline_headsymbol = vim.g.line_statusline_headsymbol or '▒'
 
 local function get_filename()
     local name = api.nvim_eval("expand('%:p')")
@@ -45,7 +45,7 @@ end
 
 function M.set_statusline(...)
     local infos = {}
-    table.insert(infos, { hl = 'VimLine_Light', text = '▒ ' .. line_mode_map[fn.mode()] .. ' ' })
+    table.insert(infos, { hl = 'VimLine_Light', text = statusline_headsymbol .. ' ' .. line_mode_map[fn.mode()] .. ' ' })
     table.insert(infos, { hl = common.get_powerline_hl(next(infos) ~= nil and 'VimLine_Light_Dark' or 'VimLine_Light_None'), text = common.get_powerline_text('light_right') })
 
     for _,getter in pairs(line_statusline_getters) do
