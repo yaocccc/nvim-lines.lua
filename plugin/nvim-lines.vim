@@ -61,7 +61,7 @@ augroup lines
     endif
     if s:line_tabline_enable == 1
         set showtabline=3
-        au VimEnter,BufWritePost,TextChanged,TextChangedI * call SetTabline()
-        au BufEnter,BufLeave * call timer_start(0, 'SetTabline')
+        au VimEnter,BufWritePost,TextChanged,TextChangedI,BufEnter * call SetTabline()
+        au BufLeave * call timer_start(0, 'SetTabline')
     endif
 augroup END
