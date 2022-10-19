@@ -12,8 +12,7 @@ local tabline_headsymbol = vim.g.line_tabline_headsymbol or '▒'
 local function get_buf_list()
     local buflist = {}
     local current = fn.bufnr('%')
-    local i = 1
-    while i <= fn.bufnr('$') do
+    for _, i in pairs(api.nvim_list_bufs()) do
         if fn.bufexists(i) == 1 and fn.buflisted(i) == 1 then
             local name = fn.bufname(i)
             local icon = common.get_fileicon(fn.getbufvar(i, '&ft'), name)
@@ -22,7 +21,6 @@ local function get_buf_list()
             name = icon .. name .. modi_mark
             table.insert(buflist, { nr = i, name = name, iscurrent = i == current })
         end
-        i = i + 1
     end
     return buflist
 end
