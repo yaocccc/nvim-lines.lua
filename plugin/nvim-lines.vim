@@ -1,41 +1,41 @@
 if exists('s:loaded') | finish | endif
 let s:loaded = 1
 
-let s:default_hl = { 'none': 'NONE', 'light': '24', 'dark': '238', 'break': '244', 'space': '238' }
-let [s:fg_key, s:bg_key] = ['ctermfg', 'ctermbg']
-
-if &termguicolors == 1
-    let s:default_hl = { 'none': 'NONE', 'light': '#11698e', 'dark': '#444445', 'break': '#868788', 'space': '#444445' }
-    let [s:fg_key, s:bg_key] = ['guifg', 'guibg']
-endif
-
+let SetStatusline = { -> luaeval("require'nvim-lines.statusline'.set_statusline()")}
 let s:line_statusline_enable = get(g:, 'line_statusline_enable', 1)
 let s:line_tabline_enable = get(g:, 'line_tabline_enable', 1)
-let s:line_hl = get(g:, 'line_hl', s:default_hl)
 
-exec printf('hi VimLine_None        %s=%s', s:bg_key, s:line_hl.none)
-exec printf('hi VimLine_Light       %s=%s', s:bg_key, s:line_hl.light)
-exec printf('hi VimLine_Dark        %s=%s', s:bg_key, s:line_hl.dark)
-exec printf('hi VimLine_Light_Dark  %s=%s %s=%s', s:fg_key, s:line_hl.light, s:bg_key, s:line_hl.dark)
-exec printf('hi VimLine_Dark_Light  %s=%s %s=%s', s:fg_key, s:line_hl.dark, s:bg_key, s:line_hl.light)
-exec printf('hi VimLine_Light_None  %s=%s %s=%s', s:fg_key, s:line_hl.light, s:bg_key, s:line_hl.none)
-exec printf('hi VimLine_Dark_None   %s=%s %s=%s', s:fg_key, s:line_hl.dark, s:bg_key, s:line_hl.none)
-exec printf('hi VimLine_Light_Break %s=%s %s=%s', s:bg_key, s:line_hl.light, s:fg_key, s:line_hl.break)
-exec printf('hi VimLine_Dark_Break  %s=%s %s=%s', s:bg_key, s:line_hl.dark, s:fg_key, s:line_hl.break)
+func! s:init_hi()
+    let s:default_hl = { 'none': 'NONE', 'light': '24', 'dark': '238', 'break': '244', 'space': '238' }
+    let [s:fg_key, s:bg_key] = ['ctermfg', 'ctermbg']
+    if &termguicolors == 1
+        let s:default_hl = { 'none': 'NONE', 'light': '#11698e', 'dark': '#444445', 'break': '#868788', 'space': '#444445' }
+        let [s:fg_key, s:bg_key] = ['guifg', 'guibg']
+    endif
+    let s:line_hl = get(g:, 'line_hl', s:default_hl)
+    exec printf('hi VimLine_None        %s=%s', s:bg_key, s:line_hl.none)
+    exec printf('hi VimLine_Light       %s=%s', s:bg_key, s:line_hl.light)
+    exec printf('hi VimLine_Dark        %s=%s', s:bg_key, s:line_hl.dark)
+    exec printf('hi VimLine_Light_Dark  %s=%s %s=%s', s:fg_key, s:line_hl.light, s:bg_key, s:line_hl.dark)
+    exec printf('hi VimLine_Dark_Light  %s=%s %s=%s', s:fg_key, s:line_hl.dark, s:bg_key, s:line_hl.light)
+    exec printf('hi VimLine_Light_None  %s=%s %s=%s', s:fg_key, s:line_hl.light, s:bg_key, s:line_hl.none)
+    exec printf('hi VimLine_Dark_None   %s=%s %s=%s', s:fg_key, s:line_hl.dark, s:bg_key, s:line_hl.none)
+    exec printf('hi VimLine_Light_Break %s=%s %s=%s', s:bg_key, s:line_hl.light, s:fg_key, s:line_hl.break)
+    exec printf('hi VimLine_Dark_Break  %s=%s %s=%s', s:bg_key, s:line_hl.dark, s:fg_key, s:line_hl.break)
 
-exec printf('hi VimLine_Buf_None        %s=%s', s:bg_key, s:line_hl.none)
-exec printf('hi VimLine_Buf_Light       %s=%s', s:bg_key, s:line_hl.light)
-exec printf('hi VimLine_Buf_Dark        %s=%s', s:bg_key, s:line_hl.dark)
-exec printf('hi VimLine_Buf_Light_Dark  %s=%s %s=%s', s:fg_key, s:line_hl.light, s:bg_key, s:line_hl.dark)
-exec printf('hi VimLine_Buf_Dark_Light  %s=%s %s=%s', s:fg_key, s:line_hl.dark, s:bg_key, s:line_hl.light)
-exec printf('hi VimLine_Buf_Light_None  %s=%s %s=%s', s:fg_key, s:line_hl.light, s:bg_key, s:line_hl.none)
-exec printf('hi VimLine_Buf_Dark_None   %s=%s %s=%s', s:fg_key, s:line_hl.dark, s:bg_key, s:line_hl.none)
-exec printf('hi VimLine_Buf_Light_Break %s=%s %s=%s', s:bg_key, s:line_hl.light, s:fg_key, s:line_hl.break)
-exec printf('hi VimLine_Buf_Dark_Break  %s=%s %s=%s', s:bg_key, s:line_hl.dark, s:fg_key, s:line_hl.break)
+    exec printf('hi VimLine_Buf_None        %s=%s', s:bg_key, s:line_hl.none)
+    exec printf('hi VimLine_Buf_Light       %s=%s', s:bg_key, s:line_hl.light)
+    exec printf('hi VimLine_Buf_Dark        %s=%s', s:bg_key, s:line_hl.dark)
+    exec printf('hi VimLine_Buf_Light_Dark  %s=%s %s=%s', s:fg_key, s:line_hl.light, s:bg_key, s:line_hl.dark)
+    exec printf('hi VimLine_Buf_Dark_Light  %s=%s %s=%s', s:fg_key, s:line_hl.dark, s:bg_key, s:line_hl.light)
+    exec printf('hi VimLine_Buf_Light_None  %s=%s %s=%s', s:fg_key, s:line_hl.light, s:bg_key, s:line_hl.none)
+    exec printf('hi VimLine_Buf_Dark_None   %s=%s %s=%s', s:fg_key, s:line_hl.dark, s:bg_key, s:line_hl.none)
+    exec printf('hi VimLine_Buf_Light_Break %s=%s %s=%s', s:bg_key, s:line_hl.light, s:fg_key, s:line_hl.break)
+    exec printf('hi VimLine_Buf_Dark_Break  %s=%s %s=%s', s:bg_key, s:line_hl.dark, s:fg_key, s:line_hl.break)
 
-exec printf('hi VimLine_Space %s=%s', s:bg_key, s:line_hl.space)
+    exec printf('hi VimLine_Space %s=%s', s:bg_key, s:line_hl.space)
+endf
 
-let SetStatusline = { -> luaeval("require'nvim-lines.statusline'.set_statusline()")}
 func! SetTabline(...)
     lua require'nvim-lines.tabline'.set_tabline()
 endf
@@ -71,5 +71,9 @@ augroup lines
         set showtabline=3
         au VimEnter,BufWritePost,TextChanged,TextChangedI,BufEnter * call SetTabline()
         au BufLeave * call timer_start(0, 'SetTabline')
+    endif
+    if s:line_statusline_enable == 1 || s:line_tabline_enable == 1
+        call s:init_hi()
+        au OptionSet termguicolors call s:init_hi()
     endif
 augroup END
