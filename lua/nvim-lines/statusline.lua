@@ -35,10 +35,9 @@ local barlen = #percent_bar
 local statusline_headsymbol = vim.g.line_statusline_headsymbol or '▒'
 
 local function get_filename()
-    local name = api.nvim_eval("expand('%:p')")
-    name = string.gsub(name, api.nvim_eval("$PWD"), '/')
-    name = string.gsub(name, '//', '')
-    name = string.gsub(name, api.nvim_eval("$HOME"), '~')
+    local name = fn.expand('%:p')
+    name = fn.substitute(name, fn.getcwd() .. '/', '', '')
+    name = fn.substitute(name, api.nvim_eval("$HOME"), '~', '')
     name = #name > 0 and name or line_unnamed_filename
     return common.get_fileicon(api.nvim_eval("&ft"), fn.bufname('%')) .. name
 end
