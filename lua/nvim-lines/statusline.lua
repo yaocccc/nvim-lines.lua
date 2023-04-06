@@ -1,6 +1,5 @@
 local M = {}
 local fn = vim.fn
-local cmd = vim.cmd
 local api = vim.api
 local common = require'nvim-lines.common'
 
@@ -35,11 +34,9 @@ local barlen = #percent_bar
 local statusline_headsymbol = vim.g.line_statusline_headsymbol or '▒'
 
 local function get_filename()
-    local name = fn.expand('%:p')
-    name = fn.substitute(name, fn.getcwd() .. '/', '', '')
-    name = fn.substitute(name, api.nvim_eval("$HOME"), '~', '')
-    name = #name > 0 and name or line_unnamed_filename
-    return common.get_fileicon(api.nvim_eval("&ft"), fn.bufname('%')) .. name
+    local name = fn.fnamemodify(fn.bufname(), ":~:.")
+    local cwd = fn.fnamemodify(fn.getcwd(-1)  .. '/', ":~:.")
+    return common.get_fileicon(api.nvim_eval("&ft"), fn.bufname('%')) .. string.gsub(name, cwd, "")
 end
 
 function M.set_statusline(...)
